@@ -5,7 +5,7 @@ var startScreen= document.getElementById('startScreen')
 var startButton= document.getElementById('start-button')
 var quizContainer= document.getElementById('quiz-container')
 var questiontitle= document.getElementById('question')
-var answerList= document.getElementById('aswerlist')
+var answerList= document.getElementById('answerList')
 var score= document.getElementById('score')
 var scoreTitle= document.getElementById('score-title')
 var scoreView= document.getElementById('scoreView')
@@ -68,6 +68,7 @@ function intervale(){
     timer.textContent= secondLeft
     if (secondLeft <=0){
         console.log("game over")
+        clearInterval(timerState)
     }
 }
 
@@ -77,8 +78,46 @@ function startQuiz(){
     startScreen.setAttribute("class", "hide")
     quizContainer.removeAttribute("class", "hide")
     //run display function question 
+    displayQuestion()
+}
+//display question title and answer choices based on current question index
+function displayQuestion(){
+    var displayQuestion= questionBank[questionIndex]
+    questiontitle.textContent= displayQuestion.question
+    answerList.innerHTML= ""
+displayQuestion.option.forEach(function(option){
+    var choiceButton= document.createElement("button")
+    choiceButton.textContent= option
+    choiceButton.setAttribute("value", option)
+//apply click avent to evaluate button value agains correct answer
+    choiceButton.onclick= checkAnswer
+    answerList.append(choiceButton)
+})
+
 }
 
-//function displayQuestion()
+function checkAnswer(){
+    if (this.value===questionBank[questionIndex].answer)
+    {console.log("correct")}
+    else{console.log("incorrect")
+}//subtract from second left to penalize user if they are incorrect test timer 
+//content to match second left
+    questionIndex++
+    if(questionIndex===questionsBank.length){
+        //run end quiz function here
+    } else{
+        displayQuestion()
+    }
 
-//showQuestion (question);
+}
+
+//end quiz function that clears time interval, hides the quiz container div,
+//unhides the final score div, sets vlaue of score view to secondLeft, 
+//function to take in initials and put value and when click submit vlaue 
+//saved to local stotage
+//grab list of initals and saved scores from local storage and display on screen
+//as a high score table
+
+
+
+startButton.onclick= startQuiz
