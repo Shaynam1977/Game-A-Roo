@@ -1,106 +1,52 @@
+var question= document.getElementById('question');
+var quizContainer= document.getElementById('quiz-container');
+
+
+
 //Question bank
 var questionBank= [
     {
-        question : 'Eritrea, which became the 182nd member of the UN in 1993, is in the continent of',
-        option : ['Asia','Africa','Europe','Australia'],
-        answer : 'Africa'
+        question : Inside of which HTML element do we put JavaScript?
+        option : ['script', 'scripting', 'javascript', 'js'],
+        answer : 'Script'
     },
     {
-        question : 'Garampani sanctuary is located at',
-        option : ['Junagarh, Gujarat','Diphu, Assam','Kohima, Nagaland','Gangtok, Sikkim'],
-        answer : 'Diphu, Assam'
+        question : What is the correct syntax for referring to an external script called "xxx.js"?
+        option : ['script herf="xxx.js"','script name="xxx.js"', 'scrpit scr="xxx.js"','simon and garfunkel'],
+        answer : 'script src="xxx.js'
     },
     {
-        question : 'For which of the following disciplines is Nobel Prize awarded?',
-        option : ['Physics and Chemistry','Physiology or Medicine','Literature, Peace and Economics','All of the above'],
-        answer : 'All of the above'
+        question : The JavaScript file must contain the <script> tag
+        option : ['True','False','Maybe','IDK'],
+        answer : 'True'
     },
     {
-        question : 'Hitler party which came into power in 1933 is known as',
-        option : ['Labour Party','Nazi Party','Ku-Klux-Klan','Democratic Party'],
-        answer : 'Nazi Party'
+        question : How do you create a function in JavaScript?
+        option : ['function:myFunction()','function = myFunction()','function myFunction()','What is a function anyways?'],
+        answer : 'function myFunction()'
     },
     {
-        question : 'First human heart transplant operation conducted by Dr. Christiaan Barnard on Louis Washkansky, was conducted in',
-        option : ['1967','1968','1958','1922'],
-        answer : '1967'
+        question : How do you call a function named "sillyFunction"?
+        option : ['call function sillyFunction()','call sillyFunction()','sillyFunction()','come here sillyFunction()'],
+        answer : 'sillyFunction'
+    }
+
+    {
+        question : How to write an IF statement in JavaScript?
+        option : ['if i = 5 then','if i = 5','if i == 5 then','if(i == 5)',]
+        answer : 'if (i == 5)'
+    }
+
+    {
+        question : How does a FOR loop start?
+        option : ['for i =1 to 5','for (i = 0; i <= 5; i++)','for (i = 0; i <= 5)','for (i <= 5; i++)'],
+        answer : 'for (i = 0; i <= 5; i++'
+    }
+
+    {
+        question : JavaScript is the same as Java?
+        option : ['False','True','IDK','coffee'],
+        answer : 'False'
     }
 ]
 
-var question= document.getElementById('question');
-var quizContainer= document.getElementById('quiz-container');
-var scorecard= document.getElementById('scorecard');
-var option0= document.getElementById('option0');
-var option1= document.getElementById('option1');
-var option2= document.getElementById('option2');
-var option3= document.getElementById('option3');
-var next= document.querySelector('.next');
-var points= document.getElementById('score');
-var span= document.querySelectorAll('span');
-var i=0;
-var score= 0;
-
-//function to display questions
-function displayQuestion(){
-    for(var a=0;a<span.length;a++){
-        span[a].style.background='none';
-    }
-    question.innerHTML= 'Q.'+(i+1)+' '+questionBank[i].question;
-    option0.innerHTML= questionBank[i].option[0];
-    option1.innerHTML= questionBank[i].option[1];
-    option2.innerHTML= questionBank[i].option[2];
-    option3.innerHTML= questionBank[i].option[3];
-    stat.innerHTML= "Question"+' '+(i+1)+' '+'of'+' '+questionBank.length;
-}
-
-//function to calculate scores
-function calcScore(e){
-    if(e.innerHTML===questionBank[i].answer && score<questionBank.length)
-    {
-        score= score+1;
-        document.getElementById(e.id).style.background= 'limegreen';
-    }
-    else{
-        document.getElementById(e.id).style.background= 'tomato';
-    }
-    setTimeout(nextQuestion,300);
-}
-
-//function to display next question
-function nextQuestion(){
-    if(i<questionBank.length-1)
-    {
-        i=i+1;
-        displayQuestion();
-    }
-    else{
-        points.innerHTML= score+ '/'+ questionBank.length;
-        quizContainer.style.display= 'none';
-        scoreboard.style.display= 'block'
-    }
-}
-
-//click events to next button
-next.addEventListener('click',nextQuestion);
-
-//Back to Quiz button event
-function backToQuiz(){
-    location.reload();
-}
-
-//function to check Answers
-function checkAnswer(){
-    var answerBank= document.getElementById('answerBank');
-    var answers= document.getElementById('answers');
-    answerBank.style.display= 'block';
-    scoreboard.style.display= 'none';
-    for(var a=0;a<questionBank.length;a++)
-    {
-        var list= document.createElement('li');
-        list.innerHTML= questionBank[a].answer;
-        answers.appendChild(list);
-    }
-}
-
-
-displayQuestion();
