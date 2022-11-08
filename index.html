@@ -6,22 +6,27 @@
     <title>Game-A-Roo</title>
 
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
     <h1 id="title">Little Quizz</h1>
+    <h2 id="timer">60</h2>
 
-    <div id="quiz-container">
+    <div id="startScreen">
+        <h2 >Play the game asshole</h2>
+        <button id="start-button">start</button>
+    </div>
+
+
+
+
+    <div id="quiz-container" class="hide">
        
         <div class="questions">
             <h2 id="question"></h2>
-            <ol type="A">
-                <li class="option"><span id="option0" onclick="calcScore(this)"></span></li>
-                <li class="option"><span id="option1" onclick="calcScore(this)"></span></li>
-                <li class="option"><span id="option2" onclick="calcScore(this)"></span></li>
-                <li class="option"><span id="option3" onclick="calcScore(this)"></span></li>
+            <ol id="answerList" type="A">
+                
             </ol>
-            <h4 id="stat"></h4>
         </div>
 
         <div class="buttons">
@@ -30,13 +35,13 @@
 
     </div>
 
- <div id="score">
-    <h2 id="score-title">Your Score</h2>
-    <h2 id="score"></h2>
-    <button type="button" id="check-answer" onclick="checkAnswer()">Check Answers</button>
+ <div id="score" class="hide">
+    <h2 id="score-title">Your Score: <span id="scoreView"></span></h2>
+    <input id="nameInput"/>
+    <button type="button" id="submit-name">submit</button>
 </div>
 
-<script scr="/index.js"></script>
+<script src="./index.js"></script>
 
 
 
