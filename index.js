@@ -103,13 +103,37 @@ function checkAnswer(){
 }//subtract from second left to penalize user if they are incorrect test timer 
 //content to match second left
     questionIndex++
-    if(questionIndex===questionsBank.length){
+    if(questionIndex===questionBank){
         //run end quiz function here
     } else{
         displayQuestion()
     }
 
+function checkAnswer(){
+    var answerBank= document.getElementById('answerList')
+    var answers= document.getElementById('answers')
+    for(var a=0;a<questionBank.length;a++)
+    {
+        var list= document.createElement('li');
+        list.innerHTML= questionBank[a].answer;
+        answers.appendChild(list)
+    }
 }
+
+//calculate score
+function calcScore(e){
+    if(e.innerHTML===questionBank[i].answer && score<questionBank.length)
+        {
+            score= score+1
+            document.getElementById(e.id).style.background= 'purple';
+        }
+            else{
+                document.getElementById(e.id).style.background= 'charcole';
+            }
+        }
+
+}
+
 
 //end quiz function that clears time interval, hides the quiz container div,
 //unhides the final score div, sets vlaue of score view to secondLeft, 
