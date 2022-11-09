@@ -1,19 +1,20 @@
 var question= document.getElementById('question');
 var quizContainer= document.getElementById('quiz-container');
-var timer= document.getElementById('timer')
-var startScreen= document.getElementById('startScreen')
-var startButton= document.getElementById('start-button')
-var quizContainer= document.getElementById('quiz-container')
-var questiontitle= document.getElementById('question')
-var answerList= document.getElementById('answerList')
-var score= document.getElementById('score')
-var scoreTitle= document.getElementById('score-title')
-var scoreView= document.getElementById('scoreView')
-var nameInput= document.getElementById('nameInput')
-var submitName= document.getElementById('submit-name')
+var timer= document.getElementById('timer');
+var startScreen= document.getElementById('startScreen');
+var startButton= document.getElementById('start-button');
+var questiontitle= document.getElementById('question');
+var answerList= document.getElementById('answerList');
+var score= document.getElementById('score');
+var scoreTitle= document.getElementById('score-title');
+var scoreView= document.getElementById('scoreView');
+var nameInput= document.getElementById('nameInput');
+var submitName= document.getElementById('submit-name');
 var secondLeft= 60
 var questionIndex= 0
 var timerState;
+
+
 
 
 //Question bank
@@ -105,8 +106,8 @@ function checkAnswer(){
     questionIndex++
     if(questionIndex===questionBank){
         //run end quiz function here
-    } else{
-        displayQuestion()
+   } else{
+       displayQuestion()
     }
 
 function checkAnswer(){
